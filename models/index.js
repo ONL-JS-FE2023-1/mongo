@@ -26,7 +26,8 @@ const saladSchema = new Schema({
         type: Date,
         required: true,
         validate: {
-            validator: (v) => v > new Date()
+            validator: (v) => v > new Date(),
+            message: 'Salad is expired!'
         }
     }
 });
