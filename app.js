@@ -5,11 +5,11 @@ const { errorHandler } = require('./errorHandler');
 
 app.use(express.json());
 
-app.get('/');
+app.get('/', SaladController.getAllSalads);
 app.post('/', SaladController.createSalad);
-app.get('/:saladId');
-app.patch('/:saladId');
-app.delete('/:saladId');
+app.get('/:saladId', SaladController.getSalad);
+app.patch('/:saladId', SaladController.updateSalad);
+app.delete('/:saladId', SaladController.deleteSalad);
 
 app.use(errorHandler);
 
