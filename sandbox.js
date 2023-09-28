@@ -89,7 +89,7 @@ db.products.aggregate([
     {
         $group: {
             _id: '$manufacturer.name',
-            countPosition: {
+            productsCount: {
                 $count: {}
             }
         }
