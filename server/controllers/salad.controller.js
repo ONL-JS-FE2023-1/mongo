@@ -2,8 +2,14 @@ const { Salad } = require('../models');
 
 module.exports.createSalad = async (req, res, next) => {
     try {
-        const { body, ingredients } = req;
-        const salad = await Salad.create({ ...body, ingredients });
+        const { body, ingredients, files } = req;
+
+        let images = [];
+        if(files) {
+            images = files.map((file) => file.filename);
+        }
+
+        const salad = await Salad.create({ ...body, ingredients, images });
         return res.status(201).send(salad);
     } catch (error) {
         next(error);

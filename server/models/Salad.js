@@ -6,6 +6,9 @@ const saladSchema = new Schema({
         type: String,
         required: true
     },
+    images: {
+        type: Array
+    },
     weight: Number,
     ingredients: [{
         type: Schema.Types.ObjectId,
