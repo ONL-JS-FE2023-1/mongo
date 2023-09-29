@@ -1,8 +1,8 @@
+import SaladsList from "./SaladsList/SaladsList";
+
 function App() {
   return (
-    <h1>
-      Hello frontend!
-    </h1>
+    <SaladsList />
   );
 }
 

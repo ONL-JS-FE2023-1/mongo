@@ -1,0 +1,15 @@
+.card-wrapper {
+    width: 95%;
+    /* height: 400px; */
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    padding: 10px;
+}
+
+.card-wrapper h1 {
+    text-align: center;
+}
