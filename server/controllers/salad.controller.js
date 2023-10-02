@@ -2,14 +2,9 @@ const { Salad } = require('../models');
 
 module.exports.createSalad = async (req, res, next) => {
     try {
-        const { body, ingredients, files } = req;
+        const { body, ingredients } = req;
 
-        let images = [];
-        if(files) {
-            images = files.map((file) => file.filename);
-        }
-
-        const salad = await Salad.create({ ...body, ingredients, images });
+        const salad = await Salad.create({ ...body, ingredients });
         return res.status(201).send(salad);
     } catch (error) {
         next(error);
@@ -38,8 +33,9 @@ module.exports.getAllSalads = async (req, res, next) => {
 
 module.exports.updateSalad = async (req, res, next) => {
     try {
-        const {body, params: {saladId}} = req;
-        const updated = await Salad.findByIdAndUpdate(saladId, body, {returnDocument: 'after'});
+        const {body, ingredients, params: {saladId}} = req;
+
+        const updated = await Salad.findByIdAndUpdate(saladId, {...body, ingredients }, {returnDocument: 'after'});
         return res.status(200).send(updated);
     } catch (error) {
         next(error);

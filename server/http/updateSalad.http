@@ -1,8 +1,6 @@
-PATCH http://localhost:5000/651317e483eabb512fb9b90d HTTP/1.1
+PATCH http://localhost:5000/api/salads/6515aee6857d2ecfd3db2dd1 HTTP/1.1
 Content-Type: application/json
 
 {
-    "sauce": "mustard",
-    "dietType": "light",
-    "expired": "2023-10-30"
+    "ingredients": ["tomato"]
 }

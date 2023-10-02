@@ -7,6 +7,7 @@ import './style.css';
 const SaladCard = (props) => {
     const { name, images,weight, ingredients, sauce, dietType, isSpicy, expired } = props.salad;
     
+    // Налаштування для каруселі slick-carousel
     const slickSettings = {
         dots: true,
         infinite: true,

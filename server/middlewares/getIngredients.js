@@ -1,8 +1,11 @@
-const { Ingredient } = require('../models');
+const { Ingredient, Salad } = require('../models');
 
 module.exports.findIngredient = async (req, res, next) => {
     try {
-        const {body: { ingredients } } = req;
+        const { params: { saladId }, body: { ingredients } } = req;
+
+        const salad = await Salad.findById(saladId);
+
         // 1. Знайти всі інгридієнти та витягнути всю по ним інформацію
         const ingrs = []; // масив з ObjectId наших інгридієнтів
         if(ingredients) {
@@ -16,7 +19,13 @@ module.exports.findIngredient = async (req, res, next) => {
         }
 
         // 3. Чіпляємо масив інгридієнтів до req і передаємо керування контроллеру
-        req.ingredients = ingrs;
+        if(salad) {
+            if(salad.ingredients) {
+                req.ingredients = salad.ingredients.concat(ingrs)
+            }
+        } else {
+            req.ingredients = ingrs;
+        }
         next();
     } catch (error) {
         next(error);
