@@ -26,7 +26,7 @@ const SaladsList = () => {
     }, []);
 
     const renderSalads = () => {
-        return salads.map((salad) => <SaladCard salad={salad} key={salad._id} />)
+        return salads.map((salad) => <SaladCard loadSalads={loadSalads} salad={salad} key={salad._id} />)
     }
 
     return (
